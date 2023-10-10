@@ -7,4 +7,5 @@ const FlowerSchema = new Schema(
     },
     { timestamps: true },
 );
+
 module.exports = FlowerSchema;
