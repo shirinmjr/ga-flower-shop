@@ -2,11 +2,10 @@ const Flower = require('../models/flower')
 const Arrangement = require('../models/arrangement')
 
 module.exports = {
-    getAllFlowers, getOneFlower, getFlowerByColor, sortFlowerbyPriceAscending
+    getAllFlowers, getOneFlower, getFlowerByColor, sortFlowerbyPriceAscending, createArrangement, updateArrangement, deleteArrangement
 }
 
-
-//HOMEPAGE SHOW FLOWER INVENTORY ROUTE FUNCTION
+//HOMEPAGE FLOWER INVENTORY INDEX ROUTE FUNCTION
 async function getAllFlowers(req, res) {
     try {
         const flowers = await Flower.find()
@@ -16,7 +15,7 @@ async function getAllFlowers(req, res) {
     }
 }
 
-//DON'T THINK I NEED THIS?
+//DON'T THINK WE NEED THIS?
 async function getOneFlower(req, res){
     try{
         const id = req.params.id
@@ -33,11 +32,54 @@ async function getOneFlower(req, res){
 //GET FLOWER BY COLOR FUNCTION
 async function getFlowerByColor(req, res) {
     try {
-        let colorFound = flowers.filter((flower) => flower.color === req.params.color)
+        //JOSH- PLS IMPLEMENT COLOR IN SERVER.JS ROUTE '/flowers/:color'  Make sure model data colors are lower case.  Whether they come in as uppercase or lowercase on front end, .toLowerCase below will bring it in as lowercase so it matches.
+        let colorFound = Flower.find({color: req.params.color.toLowerCase()})
+        //Below doesn't work b/c 'flowers' doesn't exist.
+        //let colorFound = flowers.filter((flower) => flower.color === req.params.color)
         if (colorFound){
-            return res.json(colorFlower)
+            return res.json(colorFound)
         }
         throw new Error("Flowers in specified color not found.")
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
+//CREATE ARRANGEMENT
+async function createArrangement(req,res){
+    try{
+        const arrangement = await Arrangement.create(req.body)
+        return res.status(201).json({
+            arrangement
+        })
+    } catch (error) {
+        return res.status(500).json({error: e.message})
+    }
+}
+
+//UPDATE ARRANGEMENT
+async function updateArrangement(req, res){
+    try{
+        const id = req.params.id
+        const arrangement = await Arrangement.findByIdAndUpdate(id, req.body, {new: true})
+        if (arrangement) {
+            return res.status(200).json(arrangement)
+        }
+        throw new Error("Arrangement not found.")
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
+//DELETE ARRANGEMENT 
+async function deleteArrangement(req,res){
+    try{
+        const id = req.params.id
+        let arrangement = await Arrangement.findByIdAndDelete(id)
+        if (deleted) {
+            return res.status(200).send("Arrangement deleted")
+        }
+        throw new Error("Arrangement not found")
     } catch (error) {
         return res.status(500).send(error.message)
     }
