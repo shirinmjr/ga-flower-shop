@@ -1,11 +1,19 @@
 const express = require('express')
 const db = require('./db')
-
+const cors = require("cors");
+const bodyParser = require('body-parser');
+const logger = require('morgan');
 const Controller1 = require('./controllers/Controller1')
 
 const app = express()
 const PORT = process.env.PORT || 3001
 // Your Code Here
+
+//middlewar
+app.use(cors());
+app.use(express.json());
+app.use(logger('dev'));
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/flowers', Controller1.getAllFlowers)
 app.get('/flowers/:id', Controller1.getOneFlower)
