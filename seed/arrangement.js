@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 const models = require('../models');
 
-
-
-
-
-
 const arrangementData = [
     {
       name: 'Sunflower Delight',
