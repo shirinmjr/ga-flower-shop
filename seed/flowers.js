@@ -1,15 +1,17 @@
 const mongoose = require('mongoose');
-const {Flower} = require('../models');
-const db = require('../db');
+const models = require('../models');
+// const db = require('../db');
 
 const run = async () => {
   try {
-    mongoose.connect('mongodb://localhost/flower-shop', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+mongoose.connect('mongodb://localhost/flower-shop', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-const flowers = [
+const Model1 = models.Model1;
+
+const model1Data = [
   { "name": "Rose", "color": "Red", "price": 2.99 },
   { "name": "Tulip", "color": "Yellow", "price": 1.99 },
   { "name": "Daisy", "color": "White", "price": 1.49 },
@@ -23,14 +25,14 @@ const flowers = [
 ];
 
 
+// await Model1.deleteMany({});
+//     await Model1.insertMany(model1Data);
+//     console.log('Model1 data seeded successfully');
+//   } catch (err) {
+//     console.error('Error seeding Model1 data:', err);
+//   } finally {
+//     mongoose.disconnect();
+//   }
+// };
 
-    await Flower.insertMany(flowers);
-    console.log('Flower data seeded successfully');
-  } catch (err) {
-    console.error('Error seeding flower data:', err);
-  } finally {
-    mongoose.disconnect();
-  }
-};
-
-run();
+// run();
