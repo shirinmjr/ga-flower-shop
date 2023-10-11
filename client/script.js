@@ -23,6 +23,9 @@ async function inventoryPopulate() {
             <th>${flower.name}</th>
             <th>
             <tr>
+            <td><img src="./assets/rose.png" width=100></td>
+        </tr>
+            <tr>
                 <td>${flower.color}</td>
             </tr>
             <tr>
