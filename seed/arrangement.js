@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
-const models = require('../models');
+const Arrangement = require('../db/models/Arrangement');
+
+mongoose.connect('mongodb://localhost/flower_shop', { useNewUrlParser: true});
+
+// Seed data for arrangements
 
 
 
 
 
 
-const arrangementData = [
+const arrangementSeedData = [
     {
       name: 'Sunflower Delight',
       color: 'Yellow',
@@ -58,4 +62,36 @@ const arrangementData = [
       price: 47.99,
     },
   ];
+  
+  async function seedArrangements() {
+    try {
+        await Arrangement.deleteMany({});
+        await Arrangement.insertMany(arrangementSeedData);
+
+        console.log('Arrangements seeded successfully.');
+  } catch (err) {
+    console.error('Error seeding arrangements:', err);
+  } finally {
+    mongoose.disconnect();
+  }
+}
+seedArrangements();
+
+
+
+
+
+
+
+
+
+
+  // -
+//   Arrangement.insertMany(seedArrangements, (err) => {
+//     if (err) {
+//       console.error('Error seeding arrangements:', err);
+//     } else {
+//       console.log('Arrangements seeded successfully');
+//     }
+//   });
   
