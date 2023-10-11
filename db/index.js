@@ -1,19 +1,17 @@
 const mongoose = require('mongoose');
 
 
-// const dbURL = 'mongodb://localhost:3001/';
-
 mongoose
-.connect('mongodb://flower_shop')
-// replace url 
-.then(() => {
+
+  .connect('mongodb://127.0.0.1:27017/flower_shop')
+  .then(() => {
     console.log('Connected to MongoDB');
   })
-.catch((e) => {
-    console.error('Connection error', e.message)
+  .catch((e) => {
+    console.error('Connection error', e.message);
   });
 
-const db = mongoose.connection
+const db = mongoose.connection;
 
 module.exports = db
 
