@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const Arrangement = require('../db/models/Arrangement');
+const db = require('../db');
+const { Arrangement } = require('../models');
 
-mongoose.connect('mongodb://localhost/flower_shop', { useNewUrlParser: true});
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // Seed data for arrangements
 
@@ -11,68 +11,68 @@ mongoose.connect('mongodb://localhost/flower_shop', { useNewUrlParser: true});
 
 
 const arrangementSeedData = [
-    {
-      name: 'Sunflower Delight',
-      color: 'Yellow',
-      price: 29.99,
-    },
-    {
-      name: 'Elegant Rose Bouquet',
-      color: 'Red',
-      price: 39.99,
-    },
-    {
-      name: 'Spring Garden Arrangement',
-      color: 'Multicolored',
-      price: 49.99,
-    },
-    {
-      name: 'Lavender Love',
-      color: 'Purple',
-      price: 34.99,
-    },
-    {
-      name: 'Tropical Breeze',
-      color: 'Tropical Colors',
-      price: 44.99,
-    },
-    {
-      name: 'Classic White Roses',
-      color: 'White',
-      price: 37.99,
-    },
-    {
-      name: 'Crimson Elegance',
-      color: 'Crimson',
-      price: 41.99,
-    },
-    {
-      name: 'Wildflower Mix',
-      color: 'Various',
-      price: 32.99,
-    },
-    {
-      name: 'Orchid Paradise',
-      color: 'Orchid Colors',
-      price: 54.99,
-    },
-    {
-      name: 'Autumn Harvest',
-      color: 'Autumn Colors',
-      price: 47.99,
-    },
-  ];
-  
-  async function seedArrangements() {
-    try {
-        await Arrangement.deleteMany({});
-        await Arrangement.insertMany(arrangementSeedData);
+  {
+    name: 'Sunflower Delight',
+    color: 'Yellow',
+    price: 29.99,
+  },
+  {
+    name: 'Elegant Rose Bouquet',
+    color: 'Red',
+    price: 39.99,
+  },
+  {
+    name: 'Spring Garden Arrangement',
+    color: 'Multicolored',
+    price: 49.99,
+  },
+  {
+    name: 'Lavender Love',
+    color: 'Purple',
+    price: 34.99,
+  },
+  {
+    name: 'Tropical Breeze',
+    color: 'Tropical Colors',
+    price: 44.99,
+  },
+  {
+    name: 'Classic White Roses',
+    color: 'White',
+    price: 37.99,
+  },
+  {
+    name: 'Crimson Elegance',
+    color: 'Crimson',
+    price: 41.99,
+  },
+  {
+    name: 'Wildflower Mix',
+    color: 'Various',
+    price: 32.99,
+  },
+  {
+    name: 'Orchid Paradise',
+    color: 'Orchid Colors',
+    price: 54.99,
+  },
+  {
+    name: 'Autumn Harvest',
+    color: 'Autumn Colors',
+    price: 47.99,
+  },
+];
 
-        console.log('Arrangements seeded successfully.');
+async function seedArrangements() {
+  try {
+    //await Arrangement.deleteMany({});
+    let arrangment = await Arrangement.insertMany(arrangementSeedData);
+    console.log(arrangment);
+    console.log('Arrangements seeded successfully.');
   } catch (err) {
     console.error('Error seeding arrangements:', err);
   } finally {
-    mongoose.disconnect();
+    db.close();
   }
 }
 seedArrangements();
@@ -86,7 +86,7 @@ seedArrangements();
 
 
 
-  // -
+// -
 //   Arrangement.insertMany(seedArrangements, (err) => {
 //     if (err) {
 //       console.error('Error seeding arrangements:', err);
@@ -94,4 +94,4 @@ seedArrangements();
 //       console.log('Arrangements seeded successfully');
 //     }
 //   });
-  
+
