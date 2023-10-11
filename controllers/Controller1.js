@@ -2,7 +2,7 @@ const Flower = require('../models/flower')
 const Arrangement = require('../models/arrangement')
 
 module.exports = {
-    getAllFlowers, getOneFlower, getFlowerByColor, sortFlowerbyPriceAscending, createArrangement, updateArrangement, deleteArrangement
+    getAllFlowers, getOneFlower, getAllArrangements, , getOneArrangement, getFlowerByColor, sortFlowerbyPriceAscending, createArrangement, updateArrangement, deleteArrangement
 }
 
 //HOMEPAGE FLOWER INVENTORY INDEX ROUTE FUNCTION
@@ -15,7 +15,7 @@ async function getAllFlowers(req, res) {
     }
 }
 
-//DON'T THINK WE NEED THIS?
+//FLOWER SHOW ROUTE
 async function getOneFlower(req, res){
     try{
         const id = req.params.id
@@ -26,6 +26,31 @@ async function getOneFlower(req, res){
         return res.status(404).send('Flower with the specified ID does not exist.')
     } catch (error) {
         return res.status(500).send(error.message)
+    }
+}
+
+//ARRANGEMENT INDEX ROUTE
+async function getAllArrangements(req, res) {
+    try{
+        const arrangements = await Arrangement.find()
+        res.json(arrangements)
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
+//ARRANGEMNENT SHOW ROUTE
+async function getOneArrangement(req, res) {
+    try {
+    const id = req.params.id
+    const arrangement = await Arrangement.findById(id)
+    if (arrangement) {
+        return res.json(arrangement)
+    }
+    return res.status(404).send('Arrangement with the specified ID does not exist.')
+    } catch (error) { 
+        return res.status(500).send(error.message)
+
     }
 }
 
