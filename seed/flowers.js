@@ -1,17 +1,12 @@
 const mongoose = require('mongoose');
-const models = require('../models');
+const Flower = require('../db/models/Flower');
 // const db = require('../db');
+mongoose.connect('mongodb://localhost/flower_shop', { useNewUrlParser: true });
 
-const run = async () => {
-  try {
-mongoose.connect('mongodb://localhost/flower-shop', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+//const seedData = require('./flowers'); 
 
-const Model1 = models.Model1;
 
-const model1Data = [
+const flowerSeedData = [
   { "name": "Rose", "color": "Red", "price": 2.99 },
   { "name": "Tulip", "color": "Yellow", "price": 1.99 },
   { "name": "Daisy", "color": "White", "price": 1.49 },
@@ -24,15 +19,56 @@ const model1Data = [
   { "name": "Hydrangea", "color": "Blue", "price": 4.29 }
 ];
 
+// Function to seed flowers
+async function seedFlowers() {
+  try {
+    // Clear existing data in the flowers collection
+    await Flower.deleteMany({});
 
-// await Model1.deleteMany({});
-//     await Model1.insertMany(model1Data);
-//     console.log('Model1 data seeded successfully');
-//   } catch (err) {
-//     console.error('Error seeding Model1 data:', err);
-//   } finally {
-//     mongoose.disconnect();
-//   }
-// };
+    // Insert the seed data into the flowers collection
+    await Flower.insertMany(flowerSeedData);
 
-// run();
+    console.log('Flowers seeded successfully.');
+  } catch (err) {
+    console.error('Error seeding flowers:', err);
+  } finally {
+    // Close the database connection
+    mongoose.disconnect();
+  }
+}
+
+
+async function seedFlowers() {
+  try {
+    // Clear existing data in the flowers collection
+    await Flower.deleteMany({});
+
+    // Insert the seed data into the flowers collection
+    await Flower.insertMany(flowerSeedData);
+
+    console.log('Flowers seeded successfully.');
+  } catch (err) {
+    console.error('Error seeding flowers:', err);
+  } finally {
+    // Close the database connection
+    mongoose.disconnect();
+  }
+}
+
+async function seedFlowers() {
+  try {
+    await Flower.deleteMany({});
+    await Flower.insertMany(flowerSeedData);
+    console.log('Flowers seeded successfully.');
+  } catch (err) {
+    console.error('Error seeding flowers:', err);
+  } finally {
+    mongoose.disconnect();
+  }
+}
+seedFlowers();
+
+
+
+
+

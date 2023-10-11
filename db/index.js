@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 
-const dbURL = 'mongodb://localhost/your_database_url';
+// const dbURL = 'mongodb://localhost:3001/';
 
 mongoose
-.connect('mongodb://localhost/database_url')
-
+.connect('mongodb://flower_shop')
+// replace url 
 .then(() => {
     console.log('Connected to MongoDB');
   })
