@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Replace URL
+
 const dbURL = 'mongodb://localhost/your_database_url';
 
 mongoose
