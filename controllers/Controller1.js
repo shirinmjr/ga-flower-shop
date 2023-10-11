@@ -2,7 +2,7 @@ const Flower = require('../models/flower')
 const Arrangement = require('../models/arrangement')
 
 module.exports = {
-    getAllFlowers, getOneFlower, getAllArrangements, , getOneArrangement, getFlowerByColor, sortFlowerbyPriceAscending, createArrangement, updateArrangement, deleteArrangement
+    getAllFlowers, getOneFlower, getAllArrangements, getOneArrangement, getFlowerByColor, sortFlowerByPriceAscending, createArrangement, updateArrangement, deleteArrangement
 }
 
 //HOMEPAGE FLOWER INVENTORY INDEX ROUTE FUNCTION
@@ -39,7 +39,7 @@ async function getAllArrangements(req, res) {
     }
 }
 
-//ARRANGEMNENT SHOW ROUTE
+//ARRANGEMENT SHOW ROUTE
 async function getOneArrangement(req, res) {
     try {
     const id = req.params.id
@@ -50,17 +50,15 @@ async function getOneArrangement(req, res) {
     return res.status(404).send('Arrangement with the specified ID does not exist.')
     } catch (error) { 
         return res.status(500).send(error.message)
-
     }
 }
 
 //GET FLOWER BY COLOR FUNCTION
 async function getFlowerByColor(req, res) {
     try {
-        //JOSH- PLS IMPLEMENT COLOR IN SERVER.JS ROUTE '/flowers/:color'  Make sure model data colors are lower case.  Whether they come in as uppercase or lowercase on front end, .toLowerCase below will bring it in as lowercase so it matches.
+        //JOSH- PLS IMPLEMENT COLOR IN SERVER.JS ROUTE '/flowers/:color'  
+        //Make sure model data colors are lower case.  Whether they come in as uppercase or lowercase on front end, .toLowerCase below will bring it in as lowercase so it matches.
         let colorFound = Flower.find({color: req.params.color.toLowerCase()})
-        //Below doesn't work b/c 'flowers' doesn't exist.
-        //let colorFound = flowers.filter((flower) => flower.color === req.params.color)
         if (colorFound){
             return res.json(colorFound)
         }
@@ -111,20 +109,28 @@ async function deleteArrangement(req,res){
 }
 
 //SORT FLOWERS BY PRICE, ASCENDING
-const sortFlowerbyPriceAscending = async() => {
-    try {
+async function sortFlowerByPriceAscending(req, res){
+    try{
         const flowers = await Flower.find().sort('price')
     } catch (error){
         return res.status(500).send(error.message)
     }
 }
 
-async function main() {
-    try{
-        //await sortFlowerbyPriceAscending
-    } catch (error) {
-        console.error(error)
-    } finally {
-        await db.close
-    }
-}
+// const sortFlowerByPriceAscending = async() => {
+//     try {
+//         const flowers = await Flower.find().sort('price')
+//     } catch (error){
+//         return res.status(500).send(error.message)
+//     }
+// }
+
+// async function main() {
+//     try{
+//         //await sortFlowerbyPriceAscending
+//     } catch (error) {
+//         console.error(error)
+//     } finally {
+//         await db.close
+//     }
+// }
