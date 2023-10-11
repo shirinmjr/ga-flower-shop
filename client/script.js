@@ -1,1 +1,35 @@
-console.log("Hello There!")
+import { flowers } from './mockdata/flowers.js';
+//const BASE_URL = "http://localhost:3001";
+const flowerInventory = document.getElementById("flower-container");
+let flowerInventoryStr="";
+function onLoad() {
+
+    console.log("Welcome");
+    inventoryPopulate();
+
+}
+
+onLoad();
+
+async function inventoryPopulate() {
+    console.log("display flowers inventory");
+    
+    // let flowers = await axios.get(`${BASE_URL}/flowers`);;
+
+    flowers.forEach(flower => {
+        console.log(flower);
+        flowerInventoryStr +=
+    `    <table class="flower-content">
+            <th>${flower.name}</th>
+            <th>
+            <tr>
+                <td>${flower.color}</td>
+            </tr>
+            <tr>
+                <td>$${flower.price}</td>
+            </tr>
+            </th>
+        </table>`
+    });
+    flowerInventory.innerHTML = flowerInventoryStr;
+};
