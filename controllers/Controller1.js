@@ -2,38 +2,24 @@ const { Flower } = require(`../models`)
 const { Arrangement } = require('../models')
 
 module.exports = {
-    getAllFlowers, getOneFlower, getAllArrangements, getOneArrangement, getFlowerByColor, createArrangement, updateArrangement, deleteArrangement
+    getFlowers, getOneFlower, getAllArrangements, getOneArrangement, sortFlowerByPriceAscending, createArrangement, updateArrangement, deleteArrangement
 }
 
-//GET FLOWER BY COLOR FUNCTION
-async function getFlowerByColor(req, res) {
-    try {
-     
-        //Make sure model data colors are lower case.  Whether they come in as uppercase or lowercase on front end, .toLowerCase below will bring it in as lowercase so it matches.
-        let colorFound = Flower.find({color: req.params.color})
-        if (colorFound){
-            return res.json(colorFound)
-        }
-        throw new Error("Flowers in specified color not found.")
-    } catch (error) {
-        return res.status(500).send(error.message)
-    }
-}
 
 
 //HOMEPAGE FLOWER INVENTORY INDEX ROUTE FUNCTION
-async function getAllFlowers(req, res) {
+async function getFlowers(req, res) {
     try {
-        // if (req.query.color) {
-        //     let colorFound = await Flower.find({color: req.query.color})
-        //     if (colorFound){
-        //         return res.json(colorFound)
-        //     }
-        //     throw new Error("Flowers in specified color not found.")
-        // } else {
+        if (req.query.color) {
+            let colorFound = await Flower.find({color: req.query.color})
+            if (colorFound){
+                return res.json(colorFound)
+            }
+            throw new Error("Flowers in specified color not found.")
+        } else {
             const flowers = await Flower.find()
             res.json(flowers)
-        // }
+        }
     } catch (error){
         return res.status(500).send(error.message)
     }
