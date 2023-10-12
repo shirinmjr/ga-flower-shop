@@ -5,8 +5,6 @@ module.exports = {
     getFlowers, getOneFlower, getAllArrangements, getOneArrangement, sortFlowerByPriceAscending, createArrangement, updateArrangement, deleteArrangement
 }
 
-
-
 //HOMEPAGE FLOWER INVENTORY INDEX ROUTE FUNCTION
 async function getFlowers(req, res) {
     try {
