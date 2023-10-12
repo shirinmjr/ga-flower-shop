@@ -1,31 +1,6 @@
 const db = require('../db');
-//const mongoose = require('mongoose');
 const { Flower } = require('../models');
-//mongoose.connect('mongodb://localhost/flower_shop', { useNewUrlParser: true });
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-//const seedData = require('./flowers'); 
-
-
-
-
-// Function to seed flowers
-// async function seedFlowers() {
-//   try {
-//     // Clear existing data in the flowers collection
-//     //await Flower.deleteMany({});
-
-//     // Insert the seed data into the flowers collection
-//     await Flower.insertMany(flowerSeedData);
-
-//     console.log('Flowers seeded successfully.');
-//   } catch (err) {
-//     console.error('Error seeding flowers:', err);
-//   } finally {
-//     // Close the database connection
-//     mongoose.disconnect();
-//   }
-// }
 
 
 async function seedFlowers() {
@@ -59,18 +34,6 @@ async function seedFlowers() {
     db.close();
   }
 }
-
-// async function seedFlowers() {
-//   try {
-//   //  await Flower.deleteMany({});
-//     await Flower.insertMany(flowerSeedData);
-//     console.log('Flowers seeded successfully.');
-//   } catch (err) {
-//     console.error('Error seeding flowers:', err);
-//   } finally {
-//     mongoose.disconnect();
-//   }
-// }
 seedFlowers();
 
 

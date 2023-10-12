@@ -118,13 +118,3 @@ async function sortFlowerByPriceAscending(req, res) {
 //         return res.status(500).send(error.message)
 //     }
 // }
-
-// async function main() {
-//     try{
-//         //await sortFlowerbyPriceAscending
-//     } catch (error) {
-//         console.error(error)
-//     } finally {
-//         await db.close
-//     }
-// }

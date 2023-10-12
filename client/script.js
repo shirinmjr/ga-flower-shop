@@ -26,7 +26,7 @@ async function inventoryPopulate() {
         console.log(flower);
         flowerInventoryStr +=
             `<table class="flower-content">
-            <th>${flower.name}</th>
+            <th><h2>${flower.name}</h2></th>
             <th>
             <tr>
             <td><img src="./assets/rose.png" width=100></td>
@@ -39,7 +39,7 @@ async function inventoryPopulate() {
             </tr>
             <tr>
                 <td>
-                <input type="checkbox" class="check-flower" value="${flower._id}">
+                Pick for my Arrangment: <input type="checkbox" class="check-flower" value="${flower._id}">
                 </td>
             </tr>
             </th>
@@ -67,11 +67,3 @@ createArrangmentForm.addEventListener('submit', async (e) => {
     console.log(arrangment);
 
 });
-
-//onclick="flowersForArrangment()
-
-// function flowersForArrangment() {
-
-//     console.log("flower picked!");
-// };
-//value="${flower._id}"
