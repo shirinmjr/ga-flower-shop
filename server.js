@@ -11,15 +11,10 @@ app.use(bodyParser.json())
 
 // Your Code Here
 
-//middlewar
-app.use(cors());
-app.use(express.json());
-app.use(logger('dev'));
-app.use(express.urlencoded({ extended: true }));
-
+//app.get('/flowers/:color', Controller1.getFlowerByColor)
 app.get('/flowers', Controller1.getAllFlowers)
 app.get('/flowers/:id', Controller1.getOneFlower)
-// app.get('/flowers/:color', Controller1.getFlowerByColor)
+
 
 
 

@@ -9,57 +9,83 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 
-
 const arrangementSeedData = [
   {
-    name: 'Sunflower Delight',
-    color: 'Yellow',
+    name: 'sunflower delight',
     price: 29.99,
+    flowers: [
+      { name: 'sunflower', price: 2.79 },
+      { name: 'daisy', price: 1.49 },
+    ],
   },
   {
-    name: 'Elegant Rose Bouquet',
-    color: 'Red',
+    name: 'elegant rose bouquet',
     price: 39.99,
+    flowers: [
+      { name: 'rose', price: 2.99 },
+    ],
   },
   {
-    name: 'Spring Garden Arrangement',
-    color: 'Multicolored',
+    name: 'spring garden arrangement',
     price: 49.99,
+    flowers: [
+      { name: 'tulip', price: 1.99 },
+      { name: 'lily', price: 3.49 },
+    ],
   },
   {
-    name: 'Lavender Love',
-    color: 'Purple',
+    name: 'lavender love',
     price: 34.99,
+    flowers: [
+      { name: 'lily', price: 3.49 },
+    ],
   },
   {
-    name: 'Tropical Breeze',
-    color: 'Tropical Colors',
+    name: 'tropical breeze',
     price: 44.99,
+    flowers: [
+      { name: 'orchid', price: 4.99 },
+    ],
   },
   {
-    name: 'Classic White Roses',
-    color: 'White',
+    name: 'classic white roses',
     price: 37.99,
+    flowers: [
+      { name: 'rose', price: 2.99 },
+      { name: 'daisy', price: 1.49 },
+    ],
   },
   {
-    name: 'Crimson Elegance',
-    color: 'Crimson',
+    name: 'crimson elegance',
     price: 41.99,
+    flowers: [
+      { name: 'rose', price: 2.99 },
+      { name: 'lily', price: 3.49 },
+    ],
   },
   {
-    name: 'Wildflower Mix',
-    color: 'Various',
+    name: 'wildflower mix',
     price: 32.99,
+    flowers: [
+      { name: 'daisy', price: 1.49 },
+      { name: 'carnation', price: 1.89 },
+    ],
   },
   {
-    name: 'Orchid Paradise',
-    color: 'Orchid Colors',
+    name: 'orchid paradise',
     price: 54.99,
+    flowers: [
+      { name: 'orchid', price: 4.99 },
+    ],
   },
   {
-    name: 'Autumn Harvest',
-    color: 'Autumn Colors',
+    name: 'autumn harvest',
     price: 47.99,
+    flowers: [
+      { name: 'sunflower', price: 2.79 },
+      { name: 'daisy', price: 1.49 },
+      { name: 'rose', price: 2.99 },
+    ],
   },
 ];
 

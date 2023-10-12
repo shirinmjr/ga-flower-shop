@@ -2,12 +2,13 @@ const { Flower } = require(`../models`);
 const { Arrangement } = require('../models');
 
 module.exports = {
-    getAllFlowers, getOneFlower, getAllArrangements, getOneArrangement, sortFlowerByPriceAscending, createArrangement, updateArrangement, deleteArrangement
+    getFlowers, getOneFlower, getAllArrangements, getOneArrangement, sortFlowerByPriceAscending, createArrangement, updateArrangement, deleteArrangement
 };
 
+
+
 //HOMEPAGE FLOWER INVENTORY INDEX ROUTE FUNCTION
-async function getAllFlowers(req, res) {
-    console.log("getting all the flowers");
+async function getFlowers(req, res) {
     try {
         if (req.query.color) {
             let colorFound = await Flower.find({ color: req.query.color });
@@ -64,21 +65,6 @@ async function getOneArrangement(req, res) {
     }
 }
 
-// //GET FLOWER BY COLOR FUNCTION
-// async function getFlowerByColor(req, res) {
-//     try {
-//         //JOSH- PLS IMPLEMENT COLOR IN SERVER.JS ROUTE '/flowers/:color'
-//         //Make sure model data colors are lower case.  Whether they come in as uppercase or lowercase on front end, .toLowerCase below will bring it in as lowercase so it matches.
-//         let colorFound = Flower.find({color: req.params.color.toLowerCase()})
-//         if (colorFound){
-//             return res.json(colorFound)
-//         }
-//         throw new Error("Flowers in specified color not found.")
-//     } catch (error) {
-//         return res.status(500).send(error.message)
-//     }
-// }
-
 //CREATE ARRANGEMENT
 async function createArrangement(req, res) {
     try {
@@ -87,7 +73,7 @@ async function createArrangement(req, res) {
             arrangement
         });
     } catch (error) {
-        return res.status(500).send(error.message)
+        return res.status(500).send(error.message);
     }
 }
 
@@ -106,12 +92,12 @@ async function updateArrangement(req, res) {
 }
 
 //DELETE ARRANGEMENT 
-async function deleteArrangement(req,res){
-    try{
-        const id = req.params.id
-        let arrangement = await Arrangement.findByIdAndDelete(id)
+async function deleteArrangement(req, res) {
+    try {
+        const id = req.params.id;
+        let arrangement = await Arrangement.findByIdAndDelete(id);
         if (arrangement) {
-            return res.status(200).send("Arrangement deleted")
+            return res.status(200).send("Arrangement deleted");
         }
         throw new Error("Arrangement not found");
     } catch (error) {
