@@ -45,8 +45,8 @@ async function seedFlowers() {
       { "name": "hydrangea", "color": "blue", "price": 4.29 }
     ];
 
-    // Clear existing data in the flowers collection
-    //   await Flower.deleteMany({});
+    //Clear existing data in the flowers collection
+      // await Flower.deleteMany({});
 
     // Insert the seed data into the flowers collection
     let flowers = await Flower.insertMany(flowerSeedData);
@@ -60,17 +60,18 @@ async function seedFlowers() {
   }
 }
 
-// async function seedFlowers() {
-//   try {
-//   //  await Flower.deleteMany({});
-//     await Flower.insertMany(flowerSeedData);
-//     console.log('Flowers seeded successfully.');
-//   } catch (err) {
-//     console.error('Error seeding flowers:', err);
-//   } finally {
-//     mongoose.disconnect();
-//   }
-// }
+async function seed() {
+  try {
+    seedFlowers()
+    // await Flower.deleteMany({});
+    // await Flower.insertMany(flowerSeedData);
+    console.log('Flowers seeded successfully.');
+  } catch (err) {
+    console.error('Error seeding flowers:', err);
+  } finally {
+    db.close();
+  }
+}
 seedFlowers();
 
 

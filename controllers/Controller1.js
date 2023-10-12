@@ -5,13 +5,11 @@ module.exports = {
     getFlowers, getOneFlower, getAllArrangements, getOneArrangement, sortFlowerByPriceAscending, createArrangement, updateArrangement, deleteArrangement
 };
 
-
-
 //HOMEPAGE FLOWER INVENTORY INDEX ROUTE FUNCTION
 async function getFlowers(req, res) {
     try {
         if (req.query.color) {
-            let colorFound = await Flower.find({ color: req.query.color });
+            let colorFound = await Flower.find({ color: req.query.color.toLowerCase()});
             if (colorFound) {
                 return res.json(colorFound);
             }

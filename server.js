@@ -8,6 +8,7 @@ const Controller1 = require('./controllers/Controller1')
 const app = express()
 const PORT = process.env.PORT || 3001
 app.use(bodyParser.json())
+app.use('cors')
 
 // Your Code Here
 
