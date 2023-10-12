@@ -10,6 +10,7 @@ async function getFlowers(req, res) {
     try {
         if (req.query.color) {
             let colorFound = await Flower.find({ color: req.query.color.toLowerCase()});
+            console.log(colorFound)
             if (colorFound) {
                 return res.json(colorFound);
             }
@@ -22,8 +23,6 @@ async function getFlowers(req, res) {
         return res.status(500).send(error.message);
     }
 }
-
-//.toLowerCase()
 
 //FLOWER SHOW ROUTE
 async function getOneFlower(req, res) {
