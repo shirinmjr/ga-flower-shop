@@ -1,14 +1,48 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
+    text-align: center;
+    text-shadow: 1px 1px 2px silver, 0 0 1em rgb(247, 229, 240), 0 0 0.2em rgb(178, 160, 174);
+
   }
   header {
     background-color: #F9A825;
-    padding: 20px;
+    padding: auto;
     text-align: center;
     color: white;
+
+  }
+  .main-nav{
+    border: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: medium;
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+    background-color: #F9A825;
+    
+
+  }
+  .nav-li{
+   margin: 20px;
+   align-items: center;
+  
+   list-style-type: none;
+  }
+
+  li button{
+    border: none;
+    background-color: #F9A825;
+    font-size: x-large;
+    font-weight: 700;
+    color: aliceblue;
+    text-shadow: 1px 1px 2px silver, 0 0 1em rgb(30, 135, 68), 0 0 0.2em green;
+  }
+  img{
+    border-radius: 0.5em;
   }
   header h1 {
     font-size: 36px;
@@ -47,7 +81,8 @@ body {
     justify-content: center;
   }
   #create-arrangment {
-    background-color: #F9A825;
+    background-color: #f99f0e;
+    border-radius: 1.5em;
     color: white;
     padding: 10px 20px;
     border: none;

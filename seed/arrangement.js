@@ -4,11 +4,6 @@ const { Arrangement } = require('../models');
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // Seed data for arrangements
-
-
-
-
-
 const arrangementSeedData = [
   {
     name: 'sunflower delight',
@@ -107,17 +102,4 @@ seedArrangements();
 
 
 
-
-
-
-
-
-// -
-//   Arrangement.insertMany(seedArrangements, (err) => {
-//     if (err) {
-//       console.error('Error seeding arrangements:', err);
-//     } else {
-//       console.log('Arrangements seeded successfully');
-//     }
-//   });
 
