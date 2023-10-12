@@ -9,7 +9,7 @@ module.exports = {
 async function getFlowers(req, res) {
     try {
         if (req.query.color) {
-            let colorFound = await Flower.find({ color: req.query.color.toLowerCase()});
+            let colorFound = await Flower.find({ color: req.query.color.toLowerCase() });
             if (colorFound) {
                 return res.json(colorFound);
             }
@@ -117,15 +117,5 @@ async function sortFlowerByPriceAscending(req, res) {
 //         const flowers = await Flower.find().sort('price')
 //     } catch (error){
 //         return res.status(500).send(error.message)
-//     }
-// }
-
-// async function main() {
-//     try{
-//         //await sortFlowerbyPriceAscending
-//     } catch (error) {
-//         console.error(error)
-//     } finally {
-//         await db.close
 //     }
 // }
