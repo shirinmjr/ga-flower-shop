@@ -1,19 +1,29 @@
-const Flower = require('../models/flower')
-const Arrangement = require('../models/arrangement')
+const { Flower } = require(`../models`)
+const { Arrangement } = require('../models')
 
 module.exports = {
-    getAllFlowers, getOneFlower, getAllArrangements, getOneArrangement, getFlowerByColor, sortFlowerByPriceAscending, createArrangement, updateArrangement, deleteArrangement
+    getAllFlowers, getOneFlower, getAllArrangements, getOneArrangement, sortFlowerByPriceAscending, createArrangement, updateArrangement, deleteArrangement
 }
 
 //HOMEPAGE FLOWER INVENTORY INDEX ROUTE FUNCTION
 async function getAllFlowers(req, res) {
     try {
-        const flowers = await Flower.find()
-        res.json(flowers)
+        if (req.query.color) {
+            let colorFound = await Flower.find({color: req.query.color})
+            if (colorFound){
+                return res.json(colorFound)
+            }
+            throw new Error("Flowers in specified color not found.")
+        } else {
+            const flowers = await Flower.find()
+            res.json(flowers)
+        }
     } catch (error){
         return res.status(500).send(error.message)
     }
 }
+
+//.toLowerCase()
 
 //FLOWER SHOW ROUTE
 async function getOneFlower(req, res){
@@ -53,20 +63,20 @@ async function getOneArrangement(req, res) {
     }
 }
 
-//GET FLOWER BY COLOR FUNCTION
-async function getFlowerByColor(req, res) {
-    try {
-        //JOSH- PLS IMPLEMENT COLOR IN SERVER.JS ROUTE '/flowers/:color'  
-        //Make sure model data colors are lower case.  Whether they come in as uppercase or lowercase on front end, .toLowerCase below will bring it in as lowercase so it matches.
-        let colorFound = Flower.find({color: req.params.color.toLowerCase()})
-        if (colorFound){
-            return res.json(colorFound)
-        }
-        throw new Error("Flowers in specified color not found.")
-    } catch (error) {
-        return res.status(500).send(error.message)
-    }
-}
+// //GET FLOWER BY COLOR FUNCTION
+// async function getFlowerByColor(req, res) {
+//     try {
+//         //JOSH- PLS IMPLEMENT COLOR IN SERVER.JS ROUTE '/flowers/:color'  
+//         //Make sure model data colors are lower case.  Whether they come in as uppercase or lowercase on front end, .toLowerCase below will bring it in as lowercase so it matches.
+//         let colorFound = Flower.find({color: req.params.color.toLowerCase()})
+//         if (colorFound){
+//             return res.json(colorFound)
+//         }
+//         throw new Error("Flowers in specified color not found.")
+//     } catch (error) {
+//         return res.status(500).send(error.message)
+//     }
+// }
 
 //CREATE ARRANGEMENT
 async function createArrangement(req,res){
@@ -76,7 +86,7 @@ async function createArrangement(req,res){
             arrangement
         })
     } catch (error) {
-        return res.status(500).json({error: e.message})
+        return res.status(500).send(error.message)
     }
 }
 
@@ -99,7 +109,7 @@ async function deleteArrangement(req,res){
     try{
         const id = req.params.id
         let arrangement = await Arrangement.findByIdAndDelete(id)
-        if (deleted) {
+        if (arrangement) {
             return res.status(200).send("Arrangement deleted")
         }
         throw new Error("Arrangement not found")
