@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 
 // Your Code Here
 
-app.get('/flowers/:color', Controller1.getFlowerByColor)
+//app.get('/flowers/:color', Controller1.getFlowerByColor)
 app.get('/flowers', Controller1.getAllFlowers)
 app.get('/flowers/:id', Controller1.getOneFlower)
 
