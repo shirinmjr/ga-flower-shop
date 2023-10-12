@@ -91,7 +91,7 @@ const arrangementSeedData = [
 
 async function seedArrangements() {
   try {
-    //await Arrangement.deleteMany({});
+    await Arrangement.deleteMany({});
     let arrangment = await Arrangement.insertMany(arrangementSeedData);
     console.log(arrangment);
     console.log('Arrangements seeded successfully.');
