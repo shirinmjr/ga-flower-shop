@@ -1,3 +1,6 @@
 # ga-flower-shop
 
-This is GA flower shop project
+This is a group project 
+
+##Start here
+npm 
