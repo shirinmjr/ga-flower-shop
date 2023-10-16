@@ -13,10 +13,9 @@
 
 </div>
 
----
-
-<p align="center"> GA Hacketon Flower Shop<br>
-    <img width=600px style="text-align:center" src="./client/assets/home-image.jpg" alt="Project logo"></a>
+<h1 align="center"> GA Hackathon - Flower Shop</h1>
+<p align="center">
+    <img width=600px style="text-align:center" src="./client/assets/home-image.jpg" alt="Project picture"></a>
 </p>
 
 ## 📝 Table of Contents
@@ -54,18 +53,16 @@ In this group project/hackathon we aim to create a full crud app
 
 # Installing
 
-
 ## ⛏️ Built Using <a name = "built_using"></a>
 
 - [MongoDB](https://www.mongodb.com/) - Database
-    - mongoose - Database Framework
-    - nodemon
+  - mongoose - Database Framework
+  - nodemon
 - [Express](https://expressjs.com/) - Server Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
-- [CORS](https://www.npmjs.com/package/cors) -  Connect/Express middleware 
+- [CORS](https://www.npmjs.com/package/cors) - Connect/Express middleware
 - [Morgan](https://www.npmjs.com/package/morgan) - HTTP request logger middleware for node.js
 - [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) - A Quick Development Live Server with live browser reload.
-
 
 make sure you have live Server extension install
 
@@ -88,7 +85,15 @@ npm run dev
 ```
 <h3>Start front-end server using the live server extension </h3>
 
+## Database Structure
+<p align="center">
+    <img width=600px style="text-align:center" src="./client/assets/dbStructure.png" alt="Database Structure"></a>
+</p>
 
+## Running App Screenshot
+<p align="center">
+    <img width=600px style="text-align:center" src="./client/assets/budsForYouScreenshot.png" alt="working app screenshot"></a>
+</p>
 
 ## 🚀 Future improvements <a name="future"></a>
 
@@ -96,11 +101,9 @@ npm run dev
 2. A page/place to display created arrangements.
 3. Price of the arrangement would reflect the total price of selected stems.
 
-
 ## ✍️ Contributors <a name = "contributors"></a>
 
 - [@Shirin](https://github.com/shirinmjr)
 - [@Josh](https://github.com/JoshHutchison)
 - [@Darcy](https://github.com/darcystruble)
 - [@Blen]()
-
